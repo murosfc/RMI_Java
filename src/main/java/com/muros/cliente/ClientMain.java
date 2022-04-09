@@ -2,16 +2,15 @@ package com.muros.cliente;
 
 //importação das bibliotecas RMI
 import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.ServerNotActiveException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
      
 import javax.swing.JOptionPane;
 //importação da interface RMI para fatorial
 import com.muros.servidor.FatInterface;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
      
 public class ClientMain {
     //cria um objeto de interface RMI que vai conter a referência do objeto remoto

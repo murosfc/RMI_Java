@@ -3,10 +3,11 @@ package com.muros.servidor;
 //importação dos pacotes RMI
 import java.rmi.RemoteException;
 import java.rmi.server.ServerNotActiveException;
+import java.rmi.server.UnicastRemoteObject;
 
 import com.muros.servidor.TempoDeOperacao;
 import com.muros.servidor.FatInterface;
-import java.rmi.server.UnicastRemoteObject;
+
      
 //define a classe servidor que implementa a interface remota Fatorial
 public class ImplFatInterface extends UnicastRemoteObject implements FatInterface{
