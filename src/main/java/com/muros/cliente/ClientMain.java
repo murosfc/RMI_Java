@@ -10,25 +10,42 @@ import java.rmi.server.ServerNotActiveException;
 import javax.swing.JOptionPane;
 //importação da interface RMI para fatorial
 import com.muros.servidor.FatInterface;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
      
 public class ClientMain {
-	//cria um objeto de interface RMI que vai conter a referência do objeto remoto
-	private static FatInterface objServerRef;
-     
-	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException, ServerNotActiveException {
-		//retorna a referência do objeto remoto, do tipo da Interface, associado ao nome informado
-		objServerRef = (FatInterface) Naming.lookup("//localhost:5000");
+    //cria um objeto de interface RMI que vai conter a referência do objeto remoto
+    private static FatInterface objServerRef;
 
-		//define a janela para pegar o número do fatorial
-		Integer numero = Integer.parseInt(JOptionPane.showInputDialog("Digite um número para o fatorial:"));
+    public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException, ServerNotActiveException {
+        Integer numero;
+        while (true){
+            try{
+                //Buscar o registro no servidor especificado
+                Registry registro = LocateRegistry.getRegistry("localhost", 5005);
 
-		//chama o método calcular fatorial do objeto remoto, passando o valor inserido pelo usuário.
-		Integer response = objServerRef.calcularFatorial(numero);
+                //Buscar a referencia do objeto exportado pelo servidor no Regitro do RMI
+                FatInterface refFat = (FatInterface) registro.lookup("Fat");
+
+                //define a janela para pegar o número do fatorial
+                numero = Integer.parseInt(JOptionPane.showInputDialog("Digite um número para calcular o fatorial."
+                        + "\nOu um número negativo para encerrar"));
                 
-		//exibe o resultado na tela
-		JOptionPane.showMessageDialog(null, "O fatorial de " + numero + ": " + response);
-     
-		System.exit(0);
-	}
+                if (numero >= 0){
+                    //chama o método calcular fatorial do objeto remoto, passando o valor inserido pelo usuário.  exibe o resultado na tela
+                    JOptionPane.showMessageDialog(null, "Fatorial de " + numero + " = " + refFat.calcularFatorial(numero));
+                }
+                else{
+                    System.out.println("App do cliente encerrado com sucesso\n");
+                    System.exit(0);
+                }                
+            }
+            catch (Exception e){
+                System.err.println("Erro no cliente: "+e.toString());
+                e.printStackTrace();
+                System.exit(0);
+            }
+        }
+    }
 }
      
