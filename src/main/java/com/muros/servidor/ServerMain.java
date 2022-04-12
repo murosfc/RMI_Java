@@ -8,7 +8,7 @@ public class ServerMain {
     public static void main(String[] args){
         try {
             //configura o nome do sevidor como 127.0.0.1
-            System.setProperty("java.rmi.server.hostname", "localhost");
+            System.setProperty("java.rmi.server.hostname", "192.168.1.179");
             
             //cria um objeto que possui o método de cálculo do fatorial
             ImplFatInterface ojbCalculofatorial = new ImplFatInterface();
