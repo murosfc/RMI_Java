@@ -16,7 +16,7 @@ public class ServerMain {
             //Registrar o nome do objeto que será exportado pelo servido e requisitado pelo cliente  
             Registry registro = LocateRegistry.createRegistry(5005);
             
-            //faz o bind do stub
+            //faz o bind do stub nomeando como "Fat"
             registro.rebind("Fat",ojbCalculofatorial);
             
             System.out.println("O servidor está pronto para receber requisicao de cliente");            
@@ -24,7 +24,6 @@ public class ServerMain {
         	System.err.println("Erro no servidor: " + e.toString());
           e.printStackTrace();
         }
-	}
-	
+	}	
 }
 

@@ -12,7 +12,5 @@ public class TempoDeOperacao {
     public long finish(){
         return (System.nanoTime() - this.startTime);     
         
-    }
-    
-    
+    }   
 }

@@ -21,7 +21,7 @@ public class ClientMain {
         while (true){
             try{
                 //Buscar o registro no servidor especificado
-                Registry registro = LocateRegistry.getRegistry("localhost", 5005);
+                Registry registro = LocateRegistry.getRegistry("192.168.1.179", 5005);
 
                 //Buscar a referencia do objeto exportado pelo servidor no Regitro do RMI
                 FatInterface refFat = (FatInterface) registro.lookup("Fat");
@@ -35,7 +35,7 @@ public class ClientMain {
                     JOptionPane.showMessageDialog(null, "Fatorial de " + numero + " = " + refFat.calcularFatorial(numero));
                 }
                 else{
-                    System.out.println("App do cliente encerrado com sucesso\n");
+                    System.out.println("Digitado o número: "+numero+". \nApp do cliente encerrado com sucesso\n");
                     System.exit(0);
                 }                
             }
