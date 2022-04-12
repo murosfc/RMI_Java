@@ -4,11 +4,7 @@ package com.muros.servidor;
 import java.rmi.RemoteException;
 import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
-
-import com.muros.servidor.TempoDeOperacao;
-import com.muros.servidor.FatInterface;
-
-     
+   
 //define a classe servidor que implementa a interface remota Fatorial
 public class ImplFatInterface extends UnicastRemoteObject implements FatInterface{
     private static final long serialVersionUID = 1L;
@@ -19,8 +15,8 @@ public class ImplFatInterface extends UnicastRemoteObject implements FatInterfac
     }
      
 //implementa o corpo do código para calcular o fatorial
-//recebe o número passado pelo cliente
-public int calcularFatorial(int numero) throws RemoteException, ServerNotActiveException{   
+//recebe o número passado pelo cliente  
+    public int calcularFatorial(int numero) throws RemoteException, ServerNotActiveException{   
     System.err.println("O cliente de IP " + getClientHost() + 
             ", solicitou o cálculo do fatorial de " + numero + "!\n");
 		
