@@ -16,8 +16,8 @@ public class ImplFatInterface extends UnicastRemoteObject implements FatInterfac
      
 //implementa o corpo do código para calcular o fatorial
 //recebe o número passado pelo cliente  
-    public int calcularFatorial(int numero) throws RemoteException, ServerNotActiveException{   
-    System.err.println("O cliente de IP " + getClientHost() + 
+    public long calcularFatorial(long numero) throws RemoteException, ServerNotActiveException{   
+    System.out.println("O cliente de IP " + getClientHost() + 
             ", solicitou o cálculo do fatorial de " + numero + "!\n");
 		
     /*inicia um ojeto para guardar a hora inicial da execução do fatorial
@@ -26,7 +26,7 @@ public class ImplFatInterface extends UnicastRemoteObject implements FatInterfac
     TempoDeOperacao ObjCalcTempo = new TempoDeOperacao();
     
     //realiza o cálculo do fatorial
-    int resultadoFatorial = this.fatorial(numero);
+    long resultadoFatorial = this.fatorial(numero);
     
      //exibe o tempo que o cliente levou para executar o cálculo do fatorial
     System.out.println("O cliente de IP " + getClientHost() + " levou " +
@@ -36,7 +36,7 @@ public class ImplFatInterface extends UnicastRemoteObject implements FatInterfac
     return resultadoFatorial;
 	}
 //define um método recursivo para calcular o fatorial do número passado
-private int fatorial(int numero) {		
+private long fatorial(long numero) {		
         if(numero <= 1) {
                 return 1;
         } else {

@@ -13,7 +13,7 @@ public class ServerMain {
             //cria um objeto que possui o método de cálculo do fatorial
             ImplFatInterface ojbCalculofatorial = new ImplFatInterface();
             
-            //Registrar o nome do objeto que será exportado pelo servido e requisitado pelo cliente  
+            //Registrar o nome do objeto que será exportado pelo servidor e requisitado pelo cliente  
             Registry registro = LocateRegistry.createRegistry(5005);
             
             //faz o bind do stub nomeando como "Fat"
@@ -24,6 +24,6 @@ public class ServerMain {
         	System.err.println("Erro no servidor: " + e.toString());
           e.printStackTrace();
         }
-	}	
+    }	
 }
 

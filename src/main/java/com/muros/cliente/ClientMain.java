@@ -17,7 +17,7 @@ public class ClientMain {
     private static FatInterface objServerRef;
 
     public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException, ServerNotActiveException {
-        Integer numero;
+        long numero;
         while (true){
             try{
                 //Buscar o registro no servidor especificado

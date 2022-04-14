@@ -9,6 +9,6 @@ import java.rmi.server.ServerNotActiveException;
 public interface FatInterface extends Remote{
 
 //define a assinatura do método calcular e obriga que ele implemente as exceções de Remote e ServerNotActive
-    int calcularFatorial(int numero) throws RemoteException, ServerNotActiveException;
+    public long calcularFatorial(long numero) throws RemoteException, ServerNotActiveException;
 	
 }
